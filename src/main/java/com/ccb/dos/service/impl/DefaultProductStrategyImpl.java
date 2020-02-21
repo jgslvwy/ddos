@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class DefaultProductStrategyImpl implements IProductStrategy {
 
-  private static final int ATTACK_TIME_THRESHOLD = 1;
+  private static final int ATTACK_TIME_THRESHOLD = 5;
 
   private static final String TIME_PATTERN = "yyyyMMddHHmm";
 
