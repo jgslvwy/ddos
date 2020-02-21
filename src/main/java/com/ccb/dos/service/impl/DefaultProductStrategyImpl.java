@@ -37,9 +37,9 @@ public class DefaultProductStrategyImpl implements IProductStrategy {
       return true;
     }
 
-    Integer visitNumber = ipContainer.get(visitNumerKey);
+    int visitNumber = ipContainer.get(visitNumerKey);
 
-    if (ATTACK_TIME_THRESHOLD == visitNumber) {
+    if (ATTACK_TIME_THRESHOLD <= visitNumber) {
       return false;
     }
 
@@ -54,10 +54,10 @@ public class DefaultProductStrategyImpl implements IProductStrategy {
   }
 
   private void putVisitNumberIfAbsent(String ipAddr, int visitNumber) {
-    visitNumber = visitNumber++;
+    int newVisitNumber = ++ visitNumber;
     ConcurrentMap<String, Integer> ipContainer = ipContainerConfig
         .getConcurrentMap();
-    ipContainer.putIfAbsent(buildVisitNumerKey(ipAddr), visitNumber);
+    ipContainer.put(buildVisitNumerKey(ipAddr), newVisitNumber);
 
   }
 }
